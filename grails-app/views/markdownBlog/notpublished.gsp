@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Unpublished Post</title>
-    <meta name="layout" content="${post.layout ? post.layout.encodeAsHTML() : 'markdown-blog-default'}"/>
+    <meta name="layout" content="markdown-blog-default"/>
 </head>
 
 <body>

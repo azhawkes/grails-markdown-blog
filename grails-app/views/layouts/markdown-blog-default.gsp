@@ -16,7 +16,7 @@
 <body>
     <div class="markdown-blog-default-wrapper">
         <div class="markdown-blog-default-warning">
-            This is the plugin's default layout! You should use one of your own Grails layouts.
+            This is the plugin's default layout! Check the documentation to configure your own Grails views instead.
         </div>
         <g:layoutBody/>
     </div>

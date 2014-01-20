@@ -45,8 +45,9 @@ grails {
 }
 remove this line */
 
-grails.markdownblog.dateFormat = "yyyy/MM/dd"
-grails.markdownblog.postUrlShowYYYYMM = true
-grails.markdownblog.defaultLayout = "markdown-blog-default"
-grails.markdownblog.pageView = "/blog/page"
-grails.markdownblog.postView = "/blog/post"
+grails.plugin.markdownblog.dateFormat = "yyyy/MM/dd"
+grails.plugin.markdownblog.postUrlShowYYYYMM = true
+grails.plugin.markdownblog.indexView = "/markdownBlog/index"
+grails.plugin.markdownblog.archiveView = "/markdownBlog/archive"
+grails.plugin.markdownblog.postView = "/markdownBlog/post"
+grails.plugin.markdownblog.pageView = "/markdownBlog/page"

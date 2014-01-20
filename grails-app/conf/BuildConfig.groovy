@@ -47,7 +47,7 @@ grails.project.dependency.resolution = {
         compile ":markdown:1.1.1"
 
         // TODO - this is for testing only
-        runtime ":hibernate:3.6.10.6" // or ":hibernate4:4.1.11.4"
-        build ":tomcat:7.0.47"
+        //runtime ":hibernate:3.6.10.6" // or ":hibernate4:4.1.11.4"
+        //build ":tomcat:7.0.47"
     }
 }

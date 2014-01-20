@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(BlogAdminController)
-class BlogAdminControllerSpec extends Specification {
+@TestFor(MarkdownBlogAdminController)
+class MarkdownBlogAdminControllerSpec extends Specification {
 
     def setup() {
     }

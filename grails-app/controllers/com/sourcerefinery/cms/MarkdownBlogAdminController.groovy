@@ -1,6 +1,6 @@
 package com.sourcerefinery.cms
 
-class BlogAdminController {
+class MarkdownBlogAdminController {
     static defaultAction = "index"
 
     def index() {
