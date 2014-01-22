@@ -18,6 +18,27 @@ class MarkdownBlogController {
     }
 
     /**
+     * Returns an RSS feed of all published posts.
+     */
+    def rss = {
+        def posts = Post.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
+        def blogTitle = grailsApplication.config.grails.plugin?.markdownblog?.title ?: "Untitled Blog"
+
+        render(feedType: "rss", feedVersion: "2.0") {
+            title = blogTitle
+            link = g.createLink(controller: "markdownBlog", action: "rss", absolute: true)
+            description = blogTitle
+
+            posts.each { post ->
+                entry(post.title) {
+                    link = g.createLink(controller: "markdownBlog", action: "post", id: post.id)
+                    post.content
+                }
+            }
+        }
+    }
+
+    /**
      * Renders a post or page, regardless of its type.
      */
     def show() {

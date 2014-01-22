@@ -27,6 +27,7 @@ target(markdownBlogGenerateViews: "Generate post and page views for the Markdown
             writer.newLine()
             writer.newLine()
             writer.writeLine '// Added by the Markdown Blog plugin'
+            writer.writeLine 'grails.plugin.markdownblog.title = "Untitled Blog"'
             writer.writeLine 'grails.plugin.markdownblog.dateFormat = "yyyy/MM/dd"'
             writer.writeLine 'grails.plugin.markdownblog.postUrlShowYYYYMM = true'
             writer.writeLine 'grails.plugin.markdownblog.indexView = "/markdownBlog/index"'

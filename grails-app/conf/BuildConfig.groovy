@@ -45,6 +45,7 @@ grails.project.dependency.resolution = {
             export = false
         }
         compile ":markdown:1.1.1"
+        compile ":feeds:1.6"
 
         // TODO - this is for testing only
         //runtime ":hibernate:3.6.10.6" // or ":hibernate4:4.1.11.4"

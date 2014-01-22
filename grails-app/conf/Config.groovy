@@ -45,6 +45,7 @@ grails {
 }
 remove this line */
 
+grails.plugin.markdownblog.title = "Untitled Blog"
 grails.plugin.markdownblog.dateFormat = "yyyy/MM/dd"
 grails.plugin.markdownblog.postUrlShowYYYYMM = true
 grails.plugin.markdownblog.indexView = "/markdownBlog/index"
