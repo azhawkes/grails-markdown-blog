@@ -172,3 +172,7 @@ body.markdown-blog-admin * {
 .clearfix {
     display: block;
 }
+
+.epiceditor {
+    height: 300px;
+}

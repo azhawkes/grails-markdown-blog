@@ -20,6 +20,7 @@ class MarkdownBlogAdminController {
 
         if (post) {
             post.properties = params
+            println "*** content: ${params.content}"
         } else {
             post = new Post(params)
         }

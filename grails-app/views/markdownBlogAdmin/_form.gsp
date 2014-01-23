@@ -1,5 +1,8 @@
 <%@ page import="org.springframework.validation.FieldError; com.sourcerefinery.cms.Post" %>
-<g:form action="save" class="edit-post-form" id="${post.id}">
+
+<g:javascript src="epiceditor-0.22.min.js"/>
+
+<g:form action="save" class="edit-post-form" id="${post.id}" onsubmit="return saveEditorContents()">
     <div class="markdown-blog-admin-form">
         <div class="form-row">
             <label for="title">Title</label>
@@ -7,26 +10,17 @@
         </div>
         <div class="form-row">
             <label for="content">Content</label>
-            <g:textArea name="content" value="${post.content}"/>
+            <div id="epiceditor" class="epiceditor"></div>
+            <g:textArea name="content" value="${post.content}" style="display: none"/>
         </div>
         <div class="form-row clearfix">
             <div class="form-half">
-                <label for="layout">Author</label>
+                <label for="author">Author</label>
                 <g:textField name="author" value="${post.author}"/>
             </div>
             <div class="form-half">
-                <label for="layout">Permalink</label>
+                <label for="permalink">Permalink</label>
                 <g:textField name="permalink" value="${post.permalink}"/>
-            </div>
-        </div>
-        <div class="form-row clearfix">
-            <div class="form-half">
-                <label for="date">Date</label>
-                <g:datePicker name="date" value="${post.date}" precision="day" relativeYears="[-5..1]"/>
-            </div>
-            <div class="form-half">
-                <label for="layout">Layout</label>
-                <g:textField name="layout" value="${post.layout}"/>
             </div>
         </div>
         <div class="form-row clearfix">
@@ -36,6 +30,12 @@
                     <label class="radio">${it.radio} ${it.label}</label>
                 </g:radioGroup>
             </div>
+            <div class="form-half">
+                <label for="date">Date</label>
+                <g:datePicker name="date" value="${post.date}" precision="day" relativeYears="[-5..1]"/>
+            </div>
+        </div>
+        <div class="form-row clearfix">
             <div class="form-half">
                 <label for="type">Type</label>
                 <g:radioGroup name="type" values="['post', 'page']" value="${post.type}" labels="['Post', 'Page']">
@@ -58,3 +58,30 @@
         </div>
     </div>
 </g:form>
+
+<script type="text/javascript">
+    var uniqueName = "epiceditor-" + Math.random();
+    var content = document.getElementById("content");
+
+    var opts = {
+        basePath: "/epiceditor",
+        textarea: content,
+        file: {
+            name: uniqueName
+        },
+        autogrow: {
+            minHeight: 200,
+            maxHeight: 500
+        }
+    };
+
+    var editor = new EpicEditor(opts).load();
+
+    function saveEditorContents() {
+        editor.save();
+
+        return true;
+    }
+
+</script>
+
