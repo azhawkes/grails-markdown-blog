@@ -1,6 +1,6 @@
 package markdown.blog
 
-import com.sourcerefinery.cms.Post
+import com.sourcerefinery.markdownblog.MarkdownBlogPost
 
 class MarkdownBlogTagLib {
     static namespace = "blog"
@@ -16,7 +16,7 @@ class MarkdownBlogTagLib {
     }
 
     def createLink = { attrs, body ->
-        def post = attrs.post as Post
+        def post = attrs.post as MarkdownBlogPost
 
         if (!post) {
             // nothing

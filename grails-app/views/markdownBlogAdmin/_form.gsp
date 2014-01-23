@@ -1,4 +1,4 @@
-<%@ page import="org.springframework.validation.FieldError; com.sourcerefinery.cms.Post" %>
+<%@ page import="org.springframework.validation.FieldError; com.sourcerefinery.markdownblog.MarkdownBlogPost" %>
 
 <g:javascript src="epiceditor-0.22.min.js"/>
 

@@ -1,4 +1,6 @@
-package com.sourcerefinery.cms
+package com.sourcerefinery.markdownblog
+
+import com.sourcerefinery.markdownblog.MarkdownBlogPost
 
 /**
  * Controller that handles the blog admin pages. We intentionally don't use Spring Security or
@@ -9,24 +11,24 @@ class MarkdownBlogAdminController {
     static defaultAction = "index"
 
     def index() {
-        [posts: Post.findAllByStatusNotEqual("deleted")]
+        [posts: MarkdownBlogPost.findAllByStatusNotEqual("deleted")]
     }
 
     def create() {
-        [post: new Post()]
+        [post: new MarkdownBlogPost()]
     }
 
     def edit(Long id) {
-        [post: Post.get(id)]
+        [post: MarkdownBlogPost.get(id)]
     }
 
     def save() {
-        Post post = Post.get(params.id as Long)
+        MarkdownBlogPost post = MarkdownBlogPost.get(params.id as Long)
 
         if (post) {
             post.properties = params
         } else {
-            post = new Post(params)
+            post = new MarkdownBlogPost(params)
         }
 
         post.dateCreated = post.dateCreated ?: new Date()

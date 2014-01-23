@@ -1,5 +1,4 @@
-package com.sourcerefinery.cms
-
+package com.sourcerefinery.markdownblog
 /**
  * Public-facing controller that serves up blog posts and pages. It's probably a good idea to map
  * these actions individually in UrlMappings.groovy to whatever URLs suit your style.
@@ -11,8 +10,8 @@ class MarkdownBlogController {
      * Renders a blog index page with the most recent posts.
      */
     def index() {
-        def posts = Post.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
-        def recent = Post.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
+        def posts = MarkdownBlogPost.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
+        def recent = MarkdownBlogPost.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
 
         [posts: posts, recent: recent]
     }
@@ -21,7 +20,7 @@ class MarkdownBlogController {
      * Renders a blog archive page with all posts, grouped historically by year and month.
      */
     def archive() {
-        def posts = Post.findAllByStatusAndType("published", "post", [sort: "date", order: "desc"])
+        def posts = MarkdownBlogPost.findAllByStatusAndType("published", "post", [sort: "date", order: "desc"])
         def postsByMonth = posts.groupBy { g.formatDate(date: it.date, format: "MMM yyyy") }
 
         [postsByMonth: postsByMonth]
@@ -31,7 +30,7 @@ class MarkdownBlogController {
      * Returns an RSS feed of all published posts.
      */
     def rss = {
-        def posts = Post.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
+        def posts = MarkdownBlogPost.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
         def blogTitle = grailsApplication.config.grails.plugin?.markdownblog?.title ?: "Untitled Blog"
 
         render(feedType: "rss", feedVersion: "2.0") {
@@ -89,14 +88,14 @@ class MarkdownBlogController {
         }
     }
 
-    private Post getPost(params) {
-        def post = Post.get(params.id as Long)
+    private MarkdownBlogPost getPost(params) {
+        def post = MarkdownBlogPost.get(params.id as Long)
 
         if (!post && params.permalink) {
             if (params.type) {
-                post = Post.findByPermalinkAndType(params.permalink as String, params.type as String)
+                post = MarkdownBlogPost.findByPermalinkAndType(params.permalink as String, params.type as String)
             } else {
-                post = Post.findByPermalink(params.permalink as String)
+                post = MarkdownBlogPost.findByPermalink(params.permalink as String)
             }
         }
 

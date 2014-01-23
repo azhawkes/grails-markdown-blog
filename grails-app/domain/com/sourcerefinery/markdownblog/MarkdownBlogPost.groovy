@@ -1,9 +1,9 @@
-package com.sourcerefinery.cms
+package com.sourcerefinery.markdownblog
 
 /**
  * A post or page.
  */
-class Post {
+class MarkdownBlogPost {
     String layout = "markdown-blog-default"
     String title
     String type = "post"
