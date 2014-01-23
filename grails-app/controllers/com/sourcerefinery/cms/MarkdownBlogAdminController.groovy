@@ -1,5 +1,10 @@
 package com.sourcerefinery.cms
 
+/**
+ * Controller that handles the blog admin pages. We intentionally don't use Spring Security or
+ * any other security framework to secure this, but very strongly recommend users protect it
+ * with their framework of choice!
+ */
 class MarkdownBlogAdminController {
     static defaultAction = "index"
 
@@ -20,7 +25,6 @@ class MarkdownBlogAdminController {
 
         if (post) {
             post.properties = params
-            println "*** content: ${params.content}"
         } else {
             post = new Post(params)
         }

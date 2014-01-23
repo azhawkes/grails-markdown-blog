@@ -45,6 +45,7 @@ grails {
 }
 remove this line */
 
+// Plugin defaults for testing only. Users should override them in their own Config.groovy!
 grails.plugin.markdownblog.title = "Untitled Blog"
 grails.plugin.markdownblog.dateFormat = "yyyy/MM/dd"
 grails.plugin.markdownblog.postUrlShowYYYYMM = true

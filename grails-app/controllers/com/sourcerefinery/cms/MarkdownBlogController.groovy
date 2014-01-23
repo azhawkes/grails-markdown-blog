@@ -1,8 +1,15 @@
 package com.sourcerefinery.cms
 
+/**
+ * Public-facing controller that serves up blog posts and pages. It's probably a good idea to map
+ * these actions individually in UrlMappings.groovy to whatever URLs suit your style.
+ */
 class MarkdownBlogController {
     def grailsApplication
 
+    /**
+     * Renders a blog index page with the most recent posts.
+     */
     def index() {
         def posts = Post.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
         def recent = Post.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
@@ -10,6 +17,9 @@ class MarkdownBlogController {
         [posts: posts, recent: recent]
     }
 
+    /**
+     * Renders a blog archive page with all posts, grouped historically by year and month.
+     */
     def archive() {
         def posts = Post.findAllByStatusAndType("published", "post", [sort: "date", order: "desc"])
         def postsByMonth = posts.groupBy { g.formatDate(date: it.date, format: "MMM yyyy") }

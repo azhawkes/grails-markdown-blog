@@ -7,21 +7,6 @@ class UrlMappings {
             }
         }
 
-        "/blog/$permalink" {
-            controller = "blog"
-            action = "post"
-        }
-
-        "/blog/$yyyy/$mm/$permalink" {
-            controller = "blog"
-            action = "post"
-        }
-
-        "/blog/show/$id" {
-            controller = "blog"
-            action = "post"
-        }
-
         "/"(view:"/index")
         "500"(view:'/error')
 	}
