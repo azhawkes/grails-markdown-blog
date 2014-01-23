@@ -1,11 +1,14 @@
 package com.sourcerefinery.markdownblog
 
+import markdown.blog.MarkdownBlogTagLib
+
 /**
  * Public-facing controller that serves up blog posts and pages. It's probably a good idea to map
  * these actions individually in UrlMappings.groovy to whatever URLs suit your style.
  */
 class MarkdownBlogController {
     def grailsApplication
+    def markdownBlogTagLib = new MarkdownBlogTagLib()
 
     /**
      * Renders a blog index page with the most recent posts.
@@ -42,7 +45,7 @@ class MarkdownBlogController {
 
             posts.each { post ->
                 entry(post.title) {
-                    link = g.createLink(controller: "markdownBlog", action: "post", id: post.id)
+                    link = markdownBlogTagLib.createLink(post: post, absolute: true)
                     post.html
                 }
             }

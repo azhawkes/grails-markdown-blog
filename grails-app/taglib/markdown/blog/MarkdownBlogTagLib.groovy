@@ -21,22 +21,31 @@ class MarkdownBlogTagLib {
         if (!post) {
             // nothing
         } else if (post.type == "post") {
+            attrs.controller = "markdownBlog"
+
             if (grailsApplication.config.grails.plugin?.markdownblog?.postUrlShowYYYYMM && post.permalink) {
                 def yyyy = g.formatDate(date: post.date, format: 'yyyy')
                 def mm = g.formatDate(date: post.date, format: 'MM')
 
-                out << g.createLink(controller: 'markdownBlog', action: 'post', params: [yyyy: yyyy, mm: mm, permalink: post.permalink])
+                attrs.action = "post"
+                attrs.params = [yyyy: yyyy, mm: mm, permalink: post.permalink]
             } else if (post.permalink) {
-                out << g.createLink(controller: 'markdownBlog', action: 'post', params: [permalink: post.permalink])
+                attrs.action = "post"
+                attrs.params = [permalink: post.permalink]
             } else {
-                out << g.createLink(controller: 'markdownBlog', action: 'post', id: post.id)
+                attrs.action = "post"
+                attrs.id = post.id
             }
         } else if (post.type == "page") {
             if (post.permalink) {
-                out << g.createLink(controller: 'markdownBlog', action: 'page', params: [permalink: post.permalink])
+                attrs.action = "page"
+                attrs.params = [permalink: post.permalink]
             } else {
-                out << g.createLink(controller: 'markdownBlog', action: 'page', id: post.id)
+                attrs.action = "page"
+                attrs.id = post.id
             }
         }
+
+        out << g.createLink(attrs)
     }
 }
