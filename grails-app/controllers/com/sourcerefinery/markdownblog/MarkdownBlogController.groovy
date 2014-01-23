@@ -1,4 +1,5 @@
 package com.sourcerefinery.markdownblog
+
 /**
  * Public-facing controller that serves up blog posts and pages. It's probably a good idea to map
  * these actions individually in UrlMappings.groovy to whatever URLs suit your style.

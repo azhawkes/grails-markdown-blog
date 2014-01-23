@@ -1,7 +1,5 @@
 package com.sourcerefinery.markdownblog
 
-import com.sourcerefinery.markdownblog.MarkdownBlogPost
-
 /**
  * Controller that handles the blog admin pages. We intentionally don't use Spring Security or
  * any other security framework to secure this, but very strongly recommend users protect it
