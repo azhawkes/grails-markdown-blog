@@ -9,9 +9,10 @@
             <g:textField name="title" value="${post.title}"/>
         </div>
         <div class="form-row">
-            <label for="content">Content</label>
+            <label for="markdown">Content</label>
             <div id="epiceditor" class="epiceditor"></div>
-            <g:textArea name="content" value="${post.content}" style="display: none"/>
+            <g:textArea name="markdown" value="${post.markdown}" style="display: none"/>
+            <g:hiddenField name="html" value="${post.html}"/>
         </div>
         <div class="form-row clearfix">
             <div class="form-half">
@@ -61,11 +62,12 @@
 
 <script type="text/javascript">
     var uniqueName = "epiceditor-" + Math.random();
-    var content = document.getElementById("content");
+    var markdown = document.getElementById("markdown");
+    var html = document.getElementById("html");
 
     var opts = {
         basePath: "/epiceditor",
-        textarea: content,
+        textarea: markdown,
         file: {
             name: uniqueName
         },
@@ -79,6 +81,7 @@
 
     function saveEditorContents() {
         editor.save();
+        html.value = editor.exportFile(uniqueName, "html");
 
         return true;
     }

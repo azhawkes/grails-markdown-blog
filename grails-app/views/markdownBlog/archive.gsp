@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Archive</title>
+    <title>${grailsApplication.config.grails.plugin?.markdownblog?.title?.encodeAsHTML() ?: 'Untitled Blog'} - Archive</title>
     <meta name="layout" content="markdown-blog-default"/>
 </head>
 

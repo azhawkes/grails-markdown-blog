@@ -15,7 +15,7 @@
         </g:else>
     </div>
     <div class="markdown-blog-post-body">
-        ${post.content?.encodeAsHTML()}
+        ${post.html}
     </div>
     <div class="markdown-blog-post-footer">
 

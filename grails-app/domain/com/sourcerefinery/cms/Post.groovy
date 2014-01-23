@@ -10,7 +10,8 @@ class Post {
     String status = "draft"
     String permalink
     String teaser
-    String content
+    String markdown
+    String html
     String author
     Date date
     Date dateCreated // auto
@@ -23,7 +24,8 @@ class Post {
         status(nullable: false, inList: ["draft", "published", "deleted"])
         permalink(nullable: true, maxSize: 200)
         teaser(nullable: true, blank: true, maxSize: 4096)
-        content(nullable: true, blank: true)
+        markdown(nullable: true, blank: true)
+        html(nullable: true, blank: true)
         author(nullable: true, blank: true, maxSize: 200)
         date(nullable: true)
         dateCreated(nullable: false)
@@ -31,7 +33,8 @@ class Post {
     }
 
     static mapping = {
-        table("cms_post")
-        content(type: "text")
+        table("markdown_blog_post")
+        markdown(type: "text")
+        html(type: "text")
     }
 }

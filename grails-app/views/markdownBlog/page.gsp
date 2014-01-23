@@ -6,6 +6,6 @@
 </head>
 
 <body>
-    ${post.content?.encodeAsHTML()}
+    ${post.html}
 </body>
 </html>
