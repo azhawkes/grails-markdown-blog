@@ -23,8 +23,9 @@ class MarkdownBlogController {
     def archive() {
         def posts = MarkdownBlogPost.findAllByStatusAndType("published", "post", [sort: "date", order: "desc"])
         def postsByMonth = posts.groupBy { g.formatDate(date: it.date, format: "MMM yyyy") }
+        def recent = MarkdownBlogPost.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
 
-        [postsByMonth: postsByMonth]
+        [postsByMonth: postsByMonth, recent: recent]
     }
 
     /**
@@ -83,7 +84,9 @@ class MarkdownBlogController {
         def p = getPost(params)
 
         if (p?.status == "published" && p?.type == "post") {
-            render(view: grailsApplication.config.grails.plugin?.markdownblog?.postView ?: "post", model: [post: p])
+            def recent = MarkdownBlogPost.findAllByStatusAndType("published", "post", [sort: "date", order: "desc", max: 5])
+
+            render(view: grailsApplication.config.grails.plugin?.markdownblog?.postView ?: "post", model: [post: p, recent: recent])
         } else {
             response.sendError(404)
         }

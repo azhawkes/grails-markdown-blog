@@ -4,7 +4,6 @@ package com.sourcerefinery.markdownblog
  * A post or page.
  */
 class MarkdownBlogPost {
-    String layout = "markdown-blog-default"
     String title
     String type = "post"
     String status = "draft"
@@ -18,7 +17,6 @@ class MarkdownBlogPost {
     Date lastUpdated // auto
 
     static constraints = {
-        layout(nullable: true, maxSize: 100)
         title(nullable: false, blank: false, maxSize: 500)
         type(nullable: false, inList: ["post", "page"])
         status(nullable: false, inList: ["draft", "published", "deleted"])
