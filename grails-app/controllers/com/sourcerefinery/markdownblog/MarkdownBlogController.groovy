@@ -42,7 +42,7 @@ class MarkdownBlogController {
             posts.each { post ->
                 entry(post.title) {
                     link = g.createLink(controller: "markdownBlog", action: "post", id: post.id)
-                    post.content
+                    post.html
                 }
             }
         }
