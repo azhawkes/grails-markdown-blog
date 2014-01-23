@@ -52,22 +52,50 @@ class UrlMappings {
         "/top-secret-admin-section/blog/$action?/$id?"(controller: 'markdownBlogAdmin')
     }
 }
-
 ```
 
 In this example, we've put the blog posts under /blog and other pages under /pages. Of course, you can map them however you want using the powerful UrlMapping mechanism in Grails.
+
+## Taglib
+There's a very simple tag library for linking to your blog posts and pages. 
+
+```gsp
+<blog:link post="${somePost}">${somePost.title.encodeAsHTML}</blog:link>
+<blog:createLink post="${somePost}"/>
+```
+
+The two tags, ```<blog:link/>``` and ```<blog:createLink/>```, work about the same as ```<g:link/>``` and ```<g:createLink/>```, respectively. The exact output of these tags depends on your UrlMappings (see above).
 
 ## Customizing Views
 Once you get your controllers mapped and write a blog post, you will probably find the plugin's default post and page layouts to be a real disappointment. Fear not! You can install the views into your own Grails project and customize them.
 
 ```sh
-
 $ grails markdown-blog-generate-views
-
 ```
 
 This will install the views in ```grails-app/views/markdownBlog``` where you can then modify them to your heart's content.
 
 This command also appends default settings to ```grails-app/conf/Config.groovy``` that you can override.
 
-Blah
+## Configuration
+The following configurations are supported in Config.groovy:
+
+```groovy
+// The title for your blog, shown in the blog index page, archive, and RSS feed
+grails.plugin.markdownblog.title = "Untitled Blog"
+
+// Date format used in post headers
+grails.plugin.markdownblog.dateFormat = "yyyy/MM/dd"
+
+// Whether to include yyyy/mm in the URL to a post (applies to taglib only)
+grails.plugin.markdownblog.postUrlShowYYYYMM = true
+
+// Paths to your views, without the .gsp extension
+grails.plugin.markdownblog.indexView = "/markdownBlog/index"
+grails.plugin.markdownblog.archiveView = "/markdownBlog/archive"
+grails.plugin.markdownblog.postView = "/markdownBlog/post"
+grails.plugin.markdownblog.pageView = "/markdownBlog/page"
+```
+
+## Getting Help
+If you haven't realized by now, this is a pretty informal plugin. Pull requests are welcome! Shoot me an email at andy@andyhawkes.com if you have questions or comments.
