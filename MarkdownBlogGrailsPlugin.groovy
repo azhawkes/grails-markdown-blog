@@ -1,6 +1,6 @@
 class MarkdownBlogGrailsPlugin {
     // the plugin version
-    def version = "0.1"
+    def version = "0.3"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.2 > *"
     // resources that are excluded from plugin packaging
@@ -12,11 +12,12 @@ class MarkdownBlogGrailsPlugin {
     def author = "Andy Hawkes"
     def authorEmail = "andy@andyhawkes.com"
     def description = '''\
-Simple Markdown blog and content editor for embedding in Grails apps.
+This plugin adds a Markdown-powered blog and content editor to your Grails app. Edit your dynamic blog posts and pages with a client-side Markdown editor (EpicEditor). You can then customize the appearance with your own Grails views, map your posts/pages to whatever location you want with UrlMappings, and so on. Check out the project documentation for more info!
 '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/markdown-blog"
+//    def documentation = "http://grails.org/plugin/markdown-blog"
+    def documentation = "https://github.com/azhawkes/grails-markdown-blog/blob/master/README.md"
 
     // Extra (optional) plugin metadata
 
