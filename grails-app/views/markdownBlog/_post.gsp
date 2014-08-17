@@ -15,7 +15,7 @@
         </g:else>
     </div>
     <div class="markdown-blog-post-body">
-        ${post.html}
+        ${post.html.encodeAsRaw()}
     </div>
     <div class="markdown-blog-post-footer">
 
