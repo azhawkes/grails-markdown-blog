@@ -4,13 +4,13 @@ import com.sourcerefinery.markdownblog.MarkdownBlogPost
 
 class MarkdownBlogTagLib {
     static namespace = "blog"
-    static defaultEncodeAs = 'html'
+    static defaultEncodeAs = 'raw'
     //static encodeAsForTags = [tagName: 'raw']
 
     def grailsApplication
 
     def link = { attrs, body ->
-        attrs.uri = createLink(attrs, body)
+        attrs.url = createLink(attrs, body)
 
         out << g.link(attrs, body)
     }
