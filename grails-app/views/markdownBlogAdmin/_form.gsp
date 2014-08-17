@@ -66,7 +66,7 @@
     var html = document.getElementById("html");
 
     var opts = {
-        basePath: "/epiceditor",
+        basePath: "${g.resource(dir: 'epiceditor')}",
         textarea: markdown,
         file: {
             name: uniqueName
